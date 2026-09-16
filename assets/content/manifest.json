@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "title": "Excel Study Guide",
+  "subtitle": "Learn Excel offline, one topic at a time",
+  "categories": [
+    {
+      "id": "basics",
+      "title": "Excel Basics",
+      "icon": "grid_on",
+      "description": "The foundation: cells, ranges, formulas and references.",
+      "topics": [
+        { "id": "introduction", "title": "Introduction", "file": "basics/01_introduction.md", "summary": "What Excel is and how it is used." },
+        { "id": "getting_started", "title": "Getting Started", "file": "basics/02_getting_started.md", "summary": "The Excel window, entering data and shortcuts." },
+        { "id": "formulas_syntax", "title": "Formulas and Syntax", "file": "basics/03_formulas_syntax.md", "summary": "How formulas work and common errors." },
+        { "id": "ranges", "title": "Ranges", "file": "basics/04_ranges.md", "summary": "Selecting and naming blocks of cells." },
+        { "id": "fill_autofill", "title": "Fill and AutoFill", "file": "basics/05_fill_autofill.md", "summary": "Copying and continuing patterns." },
+        { "id": "cell_editing", "title": "Editing Cells", "file": "basics/06_cell_editing.md", "summary": "Move, add, delete and undo." },
+        { "id": "references", "title": "Relative & Absolute References", "file": "basics/07_references.md", "summary": "The meaning of the $ sign." },
+        { "id": "operators", "title": "Operators and Parentheses", "file": "basics/08_operators.md", "summary": "Arithmetic, comparison and order of operations." },
+        { "id": "functions_intro", "title": "Introduction to Functions", "file": "basics/09_functions_intro.md", "summary": "Function syntax and the first functions to learn." }
+      ]
+    },
+    {
+      "id": "formatting",
+      "title": "Formatting",
+      "icon": "format_paint",
+      "description": "Make your data readable and professional.",
+      "topics": [
+        { "id": "formatting_basics", "title": "Formatting Basics", "file": "formatting/01_formatting_basics.md", "summary": "Alignment, wrap text, rows and columns." },
+        { "id": "format_painter", "title": "Format Painter", "file": "formatting/02_format_painter.md", "summary": "Copy formatting in a click." },
+        { "id": "colors", "title": "Colors", "file": "formatting/03_colors.md", "summary": "Font, fill and border colours." },
+        { "id": "fonts", "title": "Fonts", "file": "formatting/04_fonts.md", "summary": "Typefaces, sizes and styles." },
+        { "id": "borders", "title": "Borders", "file": "formatting/05_borders.md", "summary": "Lines that give tables structure." },
+        { "id": "number_formats", "title": "Number Formats", "file": "formatting/06_number_formats.md", "summary": "Currency, percent, decimals and custom codes." }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data Analysis",
+      "icon": "bar_chart",
+      "description": "Sort, filter, summarise and visualise your data.",
+      "topics": [
+        { "id": "sort", "title": "Sort", "file": "data/01_sort.md", "summary": "Arrange rows in a meaningful order." },
+        { "id": "filter", "title": "Filter", "file": "data/02_filter.md", "summary": "Show only the rows that matter." },
+        { "id": "tables", "title": "Tables", "file": "data/03_tables.md", "summary": "Auto-expanding tables and structured references." },
+        { "id": "conditional_formatting", "title": "Conditional Formatting", "file": "data/04_conditional_formatting.md", "summary": "Rules, data bars, colour scales and icons." },
+        { "id": "charts", "title": "Charts", "file": "data/05_charts.md", "summary": "Turn numbers into pictures." }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "icon": "functions",
+      "description": "The essential Excel functions with examples.",
+      "topics": [
+        { "id": "sum", "title": "SUM", "file": "functions/01_sum.md", "summary": "Add values together." },
+        { "id": "average", "title": "AVERAGE", "file": "functions/02_average.md", "summary": "The arithmetic mean." },
+        { "id": "count", "title": "COUNT / COUNTA", "file": "functions/03_count.md", "summary": "Count numbers, values and blanks." },
+        { "id": "min_max", "title": "MIN / MAX / MEDIAN", "file": "functions/04_min_max.md", "summary": "Smallest, largest and middle values." },
+        { "id": "if", "title": "IF", "file": "functions/05_if.md", "summary": "Return different results based on a test." },
+        { "id": "sumif", "title": "SUMIF / SUMIFS", "file": "functions/06_sumif.md", "summary": "Add values that meet conditions." },
+        { "id": "countif", "title": "COUNTIF / COUNTIFS", "file": "functions/07_countif.md", "summary": "Count values that meet conditions." },
+        { "id": "vlookup", "title": "VLOOKUP", "file": "functions/08_vlookup.md", "summary": "Look up a value in a table." },
+        { "id": "concat", "title": "CONCAT", "file": "functions/09_concat.md", "summary": "Join text together." },
+        { "id": "left_right_trim", "title": "LEFT / RIGHT / TRIM", "file": "functions/10_left_right_trim.md", "summary": "Extract and clean text." },
+        { "id": "and_or", "title": "AND / OR / NOT", "file": "functions/11_and_or.md", "summary": "Combine logical conditions." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "title": "Excel Quiz",
+  "questions": [
+    {
+      "id": "q01",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "Which character must every Excel formula start with?",
+      "options": ["=", "+", "@", "#"],
+      "answer": 0,
+      "explanation": "Every formula begins with an equals sign, for example =A1+B1."
+    },
+    {
+      "id": "q02",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "What is the intersection of a row and a column called?",
+      "options": ["Range", "Cell", "Sheet", "Table"],
+      "answer": 1,
+      "explanation": "A cell is a single box such as A1, formed where a row and column meet."
+    },
+    {
+      "id": "q03",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "How many columns does the range A1:C10 cover?",
+      "options": ["1", "3", "10", "30"],
+      "answer": 1,
+      "explanation": "A, B and C are three columns; the range spans rows 1 to 10."
+    },
+    {
+      "id": "q04",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "What does the error #DIV/0! mean?",
+      "options": ["Text in a calculation", "A deleted cell", "Dividing by zero or an empty cell", "The column is too narrow"],
+      "answer": 2,
+      "explanation": "Dividing by zero or by an empty cell produces #DIV/0!."
+    },
+    {
+      "id": "q05",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "Which reference is absolute?",
+      "options": ["A1", "A$1", "$A$1", "$A1"],
+      "answer": 2,
+      "explanation": "$A$1 locks both the column and the row so it never changes when copied."
+    },
+    {
+      "id": "q06",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "Which keyboard shortcut opens the Format Cells dialog?",
+      "options": ["Ctrl + 1", "Ctrl + F", "Ctrl + T", "Alt + ="],
+      "answer": 0,
+      "explanation": "Ctrl + 1 opens Format Cells for precise number, font and border control."
+    },
+    {
+      "id": "q07",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "By default, how are numbers aligned in a cell?",
+      "options": ["Left", "Centre", "Right", "Justified"],
+      "answer": 2,
+      "explanation": "Numbers align right and text aligns left, which helps spot mixed data."
+    },
+    {
+      "id": "q08",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "Which shortcut inserts an AutoSum formula?",
+      "options": ["Ctrl + S", "Alt + =", "Ctrl + E", "Shift + F3"],
+      "answer": 1,
+      "explanation": "Alt + = inserts =SUM(...) for the cells above or to the left."
+    },
+    {
+      "id": "q09",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "What does the F4 key do while editing a cell reference?",
+      "options": ["Deletes the cell", "Cycles through $ lock options", "Repeats the last action", "Opens Find"],
+      "answer": 1,
+      "explanation": "F4 cycles a reference through A1, $A$1, A$1 and $A1."
+    },
+    {
+      "id": "q10",
+      "level": "beginner",
+      "category": "Basics",
+      "question": "Which action clears a cell's contents only?",
+      "options": ["Pressing Delete", "Right-click then Delete", "Ctrl + X", "Ctrl + 1"],
+      "answer": 0,
+      "explanation": "Delete clears contents; the Delete menu command removes the cell and shifts the rest."
+    },
+    {
+      "id": "q11",
+      "level": "intermediate",
+      "category": "Formatting",
+      "question": "Which tool copies formatting without copying the value?",
+      "options": ["Format Painter", "Fill Handle", "Format Cells", "Flash Fill"],
+      "answer": 0,
+      "explanation": "Format Painter copies fonts, colours, borders and number formats only."
+    },
+    {
+      "id": "q12",
+      "level": "intermediate",
+      "category": "Formatting",
+      "question": "What does the Wrap Text option do?",
+      "options": ["Merges cells", "Wraps long text inside the cell", "Rotates text", "Hides overflow"],
+      "answer": 1,
+      "explanation": "Wrap Text keeps long labels visible by wrapping them onto multiple lines."
+    },
+    {
+      "id": "q13",
+      "level": "intermediate",
+      "category": "Formatting",
+      "question": "Which item does Format Painter NOT copy?",
+      "options": ["Font colour", "Borders", "The cell value", "Number format"],
+      "answer": 2,
+      "explanation": "Format Painter only copies appearance, never the data itself."
+    },
+    {
+      "id": "q14",
+      "level": "intermediate",
+      "category": "Formatting",
+      "question": "How is the value 50% stored by Excel?",
+      "options": ["50", "0.5", "5", "500"],
+      "answer": 1,
+      "explanation": "A percentage is stored as a decimal: 50% is really 0.5."
+    },
+    {
+      "id": "q15",
+      "level": "intermediate",
+      "category": "Formatting",
+      "question": "Which of these prints by default?",
+      "options": ["Gridlines", "Borders", "Comments", "Row headers"],
+      "answer": 1,
+      "explanation": "Borders are real formatting and always print; gridlines usually do not."
+    },
+    {
+      "id": "q16",
+      "level": "intermediate",
+      "category": "Data Analysis",
+      "question": "Which feature hides rows that do not match criteria without deleting them?",
+      "options": ["Sort", "Filter", "Freeze Panes", "Group"],
+      "answer": 1,
+      "explanation": "Filters temporarily hide non-matching rows; the data stays intact."
+    },
+    {
+      "id": "q17",
+      "level": "intermediate",
+      "category": "Data Analysis",
+      "question": "Which shortcut creates an Excel Table?",
+      "options": ["Ctrl + T", "Ctrl + L", "Ctrl + K", "Ctrl + 1"],
+      "answer": 0,
+      "explanation": "Ctrl + T turns a range into a table that auto-expands."
+    },
+    {
+      "id": "q18",
+      "level": "intermediate",
+      "category": "Data Analysis",
+      "question": "Which chart type best shows a trend over time?",
+      "options": ["Pie", "Line", "Radar", "Doughnut"],
+      "answer": 1,
+      "explanation": "A line chart shows how values change across a series such as months."
+    },
+    {
+      "id": "q19",
+      "level": "intermediate",
+      "category": "Data Analysis",
+      "question": "What is conditional formatting used for?",
+      "options": ["Sorting data", "Changing a cell's look based on its value", "Merging cells", "Protecting a sheet"],
+      "answer": 1,
+      "explanation": "Conditional formatting applies colours, bars or icons automatically based on values."
+    },
+    {
+      "id": "q20",
+      "level": "advanced",
+      "category": "Data Analysis",
+      "question": "When sorting a list, what should you always sort?",
+      "options": ["The header row only", "A single column", "The whole record set", "Only numbers"],
+      "answer": 2,
+      "explanation": "Sort whole records so each row's values stay together; sorting one column scrambles data."
+    },
+    {
+      "id": "q21",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function adds values together?",
+      "options": ["COUNT", "SUM", "AVERAGE", "MAX"],
+      "answer": 1,
+      "explanation": "SUM adds numbers, for example =SUM(A1:A10)."
+    },
+    {
+      "id": "q22",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function counts only numeric cells?",
+      "options": ["COUNTA", "COUNTBLANK", "COUNT", "COUNTIF"],
+      "answer": 2,
+      "explanation": "COUNT counts numbers; COUNTA counts anything that is not empty."
+    },
+    {
+      "id": "q23",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function returns one of two results based on a test?",
+      "options": ["IF", "SUMIF", "VLOOKUP", "CONCAT"],
+      "answer": 0,
+      "explanation": "IF evaluates a logical test, for example =IF(A1>10,\"High\",\"Low\")."
+    },
+    {
+      "id": "q24",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function adds only the values that meet a condition?",
+      "options": ["SUM", "SUMIF", "COUNTIF", "AVERAGE"],
+      "answer": 1,
+      "explanation": "SUMIF adds values matching one condition, for example =SUMIF(B2:B10,\"North\",C2:C10)."
+    },
+    {
+      "id": "q25",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function searches the first column of a range and returns a value from another column?",
+      "options": ["IF", "VLOOKUP", "TRIM", "MODE"],
+      "answer": 1,
+      "explanation": "VLOOKUP finds a value in the leftmost column and returns a value from the same row."
+    },
+    {
+      "id": "q26",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "Which function joins several pieces of text into one string?",
+      "options": ["LEFT", "CONCAT", "TRIM", "MID"],
+      "answer": 1,
+      "explanation": "CONCAT (or the & operator) joins text together."
+    },
+    {
+      "id": "q27",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "What does AVERAGE ignore when calculating a mean?",
+      "options": ["Zero values", "Text and blank cells", "Negative numbers", "Formulas"],
+      "answer": 1,
+      "explanation": "AVERAGE counts only numeric cells, ignoring text and blanks in a range."
+    },
+    {
+      "id": "q28",
+      "level": "advanced",
+      "category": "Functions",
+      "question": "When does the AND function return TRUE?",
+      "options": ["When at least one condition is true", "When all conditions are true", "When no condition is true", "When the cell is empty"],
+      "answer": 1,
+      "explanation": "AND requires every condition to be true; OR needs only one."
+    }
+  ]
+}
