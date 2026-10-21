@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:get/get.dart';
 
+import '../ads/ad_ids.dart';
+import '../ads/banner_ad_slot.dart';
 import '../controllers/bookmark_controller.dart';
 import '../controllers/content_controller.dart';
 import '../models/topic.dart';
@@ -61,6 +63,7 @@ class _TopicScreenState extends State<TopicScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final bookmarks = Get.find<BookmarkController>();
+    final isTopRoute = ModalRoute.of(context)?.isCurrent ?? true;
 
     return Scaffold(
       appBar: AppBar(
@@ -122,27 +125,33 @@ class _TopicScreenState extends State<TopicScreen> {
         },
       ),
       bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: _index > 0 ? () => _goTo(_index - 1) : null,
-                  child: const Text('Previous'),
-                ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (isTopRoute) const BannerAdSlot(ids: AdIds.topicBanner),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: _index > 0 ? () => _goTo(_index - 1) : null,
+                      child: const Text('Previous'),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: FilledButton(
+                      onPressed: _index < widget.topics.length - 1
+                          ? () => _goTo(_index + 1)
+                          : null,
+                      child: const Text('Next'),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: FilledButton(
-                  onPressed: _index < widget.topics.length - 1
-                      ? () => _goTo(_index + 1)
-                      : null,
-                  child: const Text('Next'),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

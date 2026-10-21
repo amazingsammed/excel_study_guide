@@ -15,24 +15,24 @@ class QuizController extends GetxController {
 
   static const String _bestScoresKey = 'quiz_best_scores';
 
-  static const List<({String id, String title, String description})> _levelMeta =
-      <({String id, String title, String description})>[
-        (
-          id: 'beginner',
-          title: 'Beginner',
-          description: 'Cells, ranges and formula basics.',
-        ),
-        (
-          id: 'intermediate',
-          title: 'Intermediate',
-          description: 'Formatting and working with data.',
-        ),
-        (
-          id: 'advanced',
-          title: 'Advanced',
-          description: 'Lookups, conditions and core functions.',
-        ),
-      ];
+  static const List<({String id, String title, String description})>
+  _levelMeta = <({String id, String title, String description})>[
+    (
+      id: 'beginner',
+      title: 'Beginner',
+      description: 'Cells, ranges and formula basics.',
+    ),
+    (
+      id: 'intermediate',
+      title: 'Intermediate',
+      description: 'Formatting and working with data.',
+    ),
+    (
+      id: 'advanced',
+      title: 'Advanced',
+      description: 'Lookups, conditions and core functions.',
+    ),
+  ];
 
   final ContentRepository _repository;
 

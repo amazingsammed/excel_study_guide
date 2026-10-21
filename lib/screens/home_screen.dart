@@ -74,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       )
                     : null,
-                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),

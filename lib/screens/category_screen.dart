@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../ads/ad_ids.dart';
+import '../ads/banner_ad_slot.dart';
 import '../controllers/content_controller.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/topic_tile.dart';
@@ -14,6 +16,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = Get.find<ContentController>();
     final theme = Theme.of(context);
+    final isTopRoute = ModalRoute.of(context)?.isCurrent ?? true;
 
     return Obx(() {
       final category = content.categoryById(categoryId);
@@ -45,6 +48,12 @@ class CategoryScreen extends StatelessWidget {
             ...category.topics.map((topic) => TopicTile(topic: topic)),
           ],
         ),
+        bottomNavigationBar: isTopRoute
+            ? const SafeArea(
+                top: false,
+                child: BannerAdSlot(ids: AdIds.categoryBanner),
+              )
+            : null,
       );
     });
   }

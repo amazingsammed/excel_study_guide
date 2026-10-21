@@ -12,30 +12,38 @@ import 'package:excel_study_guide/data/bookmark_repository.dart';
 import 'package:excel_study_guide/main.dart';
 import 'package:excel_study_guide/models/topic.dart';
 
-Future<void> registerControllers({bool onboarded = true}) async {
+Future<void> registerControllers(
+  WidgetTester tester, {
+  bool onboarded = true,
+}) async {
   Get.testMode = true;
   Get.reset();
   SharedPreferences.setMockInitialValues(<String, Object>{
     'onboarding_complete': onboarded,
   });
 
-  final settings = SettingsController();
-  await settings.load();
-  Get.put(settings);
+  // Asset loading needs the real event loop, so it runs inside `runAsync`.
+  // Without this the bundled content futures never complete under the
+  // fake-async zone used by `testWidgets`.
+  await tester.runAsync(() async {
+    final settings = SettingsController();
+    await settings.load();
+    Get.put(settings);
 
-  final content = ContentController();
-  Get.put(content);
-  await content.load();
+    final content = ContentController();
+    Get.put(content);
+    await content.load();
 
-  final quiz = QuizController();
-  Get.put(quiz);
-  await quiz.load();
+    final quiz = QuizController();
+    Get.put(quiz);
+    await quiz.load();
 
-  Get.put(ShellController());
+    Get.put(ShellController());
 
-  final bookmarks = BookmarkController(InMemoryBookmarkRepository());
-  Get.put(bookmarks);
-  await bookmarks.load();
+    final bookmarks = BookmarkController(InMemoryBookmarkRepository());
+    Get.put(bookmarks);
+    await bookmarks.load();
+  });
 }
 
 void main() {
@@ -44,7 +52,7 @@ void main() {
   tearDown(Get.reset);
 
   testWidgets('shows the four bottom navigation destinations', (tester) async {
-    await registerControllers();
+    await registerControllers(tester);
 
     await tester.pumpWidget(const ExcelStudyGuideApp());
     await tester.pumpAndSettle();
@@ -63,7 +71,7 @@ void main() {
   testWidgets('quiz tab lists levels and gives feedback in a level', (
     tester,
   ) async {
-    await registerControllers();
+    await registerControllers(tester);
 
     await tester.pumpWidget(const ExcelStudyGuideApp());
     await tester.pumpAndSettle();
@@ -95,7 +103,7 @@ void main() {
   testWidgets('first launch shows onboarding and can be skipped', (
     tester,
   ) async {
-    await registerControllers(onboarded: false);
+    await registerControllers(tester, onboarded: false);
 
     await tester.pumpWidget(const ExcelStudyGuideApp());
     await tester.pump();

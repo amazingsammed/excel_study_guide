@@ -200,13 +200,48 @@ class _LevelCard extends StatelessWidget {
 
 enum _OptionState { idle, correct, wrong }
 
-class _QuizQuestionView extends StatelessWidget {
+class _QuizQuestionView extends StatefulWidget {
   const _QuizQuestionView({required this.quiz});
 
   final QuizController quiz;
 
   @override
+  State<_QuizQuestionView> createState() => _QuizQuestionViewState();
+}
+
+class _QuizQuestionViewState extends State<_QuizQuestionView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _select(int index) {
+    widget.quiz.select(index);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_scrollController.hasClients) {
+        return;
+      }
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
+  void _next() {
+    widget.quiz.next();
+    if (_scrollController.hasClients) {
+      _scrollController.jumpTo(0);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final quiz = widget.quiz;
     final theme = Theme.of(context);
     return Obx(() {
       final question = quiz.current;
@@ -217,64 +252,82 @@ class _QuizQuestionView extends StatelessWidget {
       final answered = quiz.answered;
       final total = quiz.activeQuestions.length;
 
-      return ListView(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+      return Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Question ${quiz.index.value + 1} of $total',
-                  style: theme.textTheme.labelLarge,
+          Expanded(
+            child: ListView(
+              controller: _scrollController,
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Question ${quiz.index.value + 1} of $total',
+                        style: theme.textTheme.labelLarge,
+                      ),
+                    ),
+                    Text(
+                      'Score ${quiz.score.value}',
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: LinearProgressIndicator(
+                    value: quiz.progress,
+                    minHeight: 8,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Chip(
+                    label: Text(question.category),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  question.question,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                for (var i = 0; i < question.options.length; i++)
+                  _OptionTile(
+                    label: question.options[i],
+                    state: _stateFor(i, question, selected, answered),
+                    onTap: answered ? null : () => _select(i),
+                  ),
+                if (answered) ...[
+                  const SizedBox(height: 8),
+                  _ExplanationCard(
+                    question: question,
+                    isCorrect: selected == question.answer,
+                  ),
+                ],
+              ],
+            ),
+          ),
+          SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+              child: SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: answered ? _next : null,
+                  child: Text(quiz.isLast ? 'See results' : 'Next question'),
                 ),
               ),
-              Text(
-                'Score ${quiz.score.value}',
-                style: theme.textTheme.labelLarge?.copyWith(
-                  color: theme.colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: LinearProgressIndicator(value: quiz.progress, minHeight: 8),
-          ),
-          const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Chip(
-              label: Text(question.category),
-              visualDensity: VisualDensity.compact,
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            question.question,
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 20),
-          for (var i = 0; i < question.options.length; i++)
-            _OptionTile(
-              label: question.options[i],
-              state: _stateFor(i, question, selected, answered),
-              onTap: answered ? null : () => quiz.select(i),
-            ),
-          if (answered) ...[
-            const SizedBox(height: 8),
-            _ExplanationCard(
-              question: question,
-              isCorrect: selected == question.answer,
-            ),
-          ],
-          const SizedBox(height: 24),
-          FilledButton(
-            onPressed: answered ? quiz.next : null,
-            child: Text(quiz.isLast ? 'See results' : 'Next question'),
           ),
         ],
       );

@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'ads/ad_service.dart';
 import 'app/app_theme.dart';
 import 'controllers/bookmark_controller.dart';
 import 'controllers/content_controller.dart';
@@ -28,6 +31,9 @@ Future<void> main() async {
   );
 
   runApp(const ExcelStudyGuideApp());
+
+  // Warm up AdMob in the background so the first banner can render sooner.
+  unawaited(AdService.ensureInitialized());
 }
 
 class ExcelStudyGuideApp extends StatelessWidget {
