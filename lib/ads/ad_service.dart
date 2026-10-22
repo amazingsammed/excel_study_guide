@@ -14,7 +14,11 @@ class AdService {
   static bool _unavailable = false;
   static Future<bool>? _initialization;
 
+  /// Set with `--dart-define=HIDE_ADS=true` when capturing store screenshots.
+  static const bool _hideAds = bool.fromEnvironment('HIDE_ADS');
+
   static bool get isSupported =>
+      !_hideAds &&
       !kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.android ||
           defaultTargetPlatform == TargetPlatform.iOS);
