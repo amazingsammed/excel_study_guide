@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="excel_study_guide"
+        android:label="Excel SG"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <!-- AdMob application ID. Keep in sync with AdIds.androidAppId in

@@ -1,4 +1,4 @@
-package com.example.excel_study_guide
+package com.trustmedia.excel_study_guide
 
 import io.flutter.embedding.android.FlutterActivity
 
