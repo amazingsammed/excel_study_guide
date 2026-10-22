@@ -4,11 +4,12 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'ad_ids.dart';
 import 'ad_service.dart';
 
-/// A responsive, bottom-anchored banner ad.
+/// A responsive banner ad for the bottom of a screen or inline in a list.
 ///
 /// The slot collapses completely on unsupported platforms, when no ad unit is
-/// configured, or while an ad fails to load. AdMob's adaptive size is used so
-/// the banner always fits the available width.
+/// configured, or while an ad fails to load. AdMob's adaptive size keeps the
+/// creative at normal banner height (never full screen) and fits the available
+/// width.
 class BannerAdSlot extends StatefulWidget {
   const BannerAdSlot({super.key, required this.ids});
 
@@ -151,9 +152,8 @@ class _BannerAdSlotState extends State<BannerAdSlot> {
               top: BorderSide(color: scheme.outlineVariant, width: 1),
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Center(
+          child: Center(
+            child: ClipRect(
               child: SizedBox(
                 width: ad.size.width.toDouble(),
                 height: ad.size.height.toDouble(),

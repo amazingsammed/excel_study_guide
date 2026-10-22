@@ -52,11 +52,23 @@ manifest.
 - **flutter_svg** for the bundled illustrations
 - **sqflite** (with `sqflite_common_ffi` on desktop) for bookmark storage
 - **shared_preferences** for theme, text size, onboarding and quiz scores
+- **google_mobile_ads** for banner ads (Android and iOS)
+
+## Ads
+
+All AdMob IDs live in `lib/ads/ad_ids.dart`. Debug builds automatically use
+Google's official test banners; profile and release builds use the production
+unit IDs. The AdMob application ID is configured separately in
+`android/app/src/main/AndroidManifest.xml` and `ios/Runner/Info.plist`.
+
+Banners are placed at the bottom of the tab shell and in the category/topic
+screens. Other platforms and widget tests hide ad slots automatically.
 
 ## Project structure
 
 ```
 lib/
+  ads/            AdMob IDs, SDK initialization and banner widget
   app/            Theme, navigation helpers and category icons
   controllers/    Content, bookmarks, quiz, settings and shell state
   data/           SQLite database, bookmark and content repositories

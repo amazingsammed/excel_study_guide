@@ -46,14 +46,15 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ),
             ...category.topics.map((topic) => TopicTile(topic: topic)),
+            if (isTopRoute) ...[
+              const SizedBox(height: 16),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: BannerAdSlot(ids: AdIds.categoryBanner),
+              ),
+            ],
           ],
         ),
-        bottomNavigationBar: isTopRoute
-            ? const SafeArea(
-                top: false,
-                child: BannerAdSlot(ids: AdIds.categoryBanner),
-              )
-            : null,
       );
     });
   }

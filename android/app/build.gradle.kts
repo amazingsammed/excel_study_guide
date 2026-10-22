@@ -44,6 +44,11 @@ kotlin {
     }
 }
 
+dependencies {
+    // Google Mobile Ads SDK, pinned to the version bundled by google_mobile_ads.
+    implementation("com.google.android.gms:play-services-ads:25.4.0")
+}
+
 flutter {
     source = "../.."
 }

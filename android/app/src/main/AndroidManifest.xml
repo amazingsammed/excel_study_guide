@@ -6,11 +6,8 @@
         android:label="excel_study_guide"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- TODO: Replace with your AdMob Android application ID.
-             Keep in sync with AdIds.androidAppId in lib/ads/ad_ids.dart. -->
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+        <!-- AdMob application ID. Keep in sync with AdIds.androidAppId in
+             lib/ads/ad_ids.dart. -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -38,6 +35,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5034627120549852~3841427606"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

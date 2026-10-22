@@ -99,59 +99,60 @@ class _TopicScreenState extends State<TopicScreen> {
           }),
         ],
       ),
-      body: FutureBuilder<String>(
-        future: _contentFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('${snapshot.error}'));
-          }
-          return Markdown(
-            controller: _scrollController,
-            data: snapshot.data ?? '',
-            selectable: true,
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
-            styleSheet: _styleSheet(context),
-            onTapLink: (text, href, title) {
-              Get.snackbar(
-                'External link',
-                href ?? text,
-                snackPosition: SnackPosition.BOTTOM,
-              );
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: FutureBuilder<String>(
+              future: _contentFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text('${snapshot.error}'));
+                }
+                return Markdown(
+                  controller: _scrollController,
+                  data: snapshot.data ?? '',
+                  selectable: true,
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+                  styleSheet: _styleSheet(context),
+                  onTapLink: (text, href, title) {
+                    Get.snackbar(
+                      'External link',
+                      href ?? text,
+                      snackPosition: SnackPosition.BOTTOM,
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          if (isTopRoute) const BannerAdSlot(ids: AdIds.topicBanner),
+        ],
       ),
       bottomNavigationBar: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (isTopRoute) const BannerAdSlot(ids: AdIds.topicBanner),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: _index > 0 ? () => _goTo(_index - 1) : null,
-                      child: const Text('Previous'),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: FilledButton(
-                      onPressed: _index < widget.topics.length - 1
-                          ? () => _goTo(_index + 1)
-                          : null,
-                      child: const Text('Next'),
-                    ),
-                  ),
-                ],
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: _index > 0 ? () => _goTo(_index - 1) : null,
+                  child: const Text('Previous'),
+                ),
               ),
-            ),
-          ],
+              const SizedBox(width: 12),
+              Expanded(
+                child: FilledButton(
+                  onPressed: _index < widget.topics.length - 1
+                      ? () => _goTo(_index + 1)
+                      : null,
+                  child: const Text('Next'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
